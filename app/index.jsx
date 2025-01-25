@@ -16,11 +16,14 @@ export default function App() {
       <Text className="font-pmedium" onPress={upgradeNumber}> Aumentar numerooo </Text>
       <Text className="text-4xl font-pbold" >Amo te Liliana</Text>
       <StatusBar style="auto" />
-      <Link href="/profile" style={{color:"blue"}}>Go to Profile0000</Link>
-      <Link href="/about" style={{color:"blue"}}>Go to About</Link>
+  
+      <Link href="/about" className='text-red-600 font-psemibold' >Go to About</Link>
+      <Link href="/home" className='text-red-600 font-psemibold' >Go to Home</Link>
+ 
+   
     </View>
 
 
   );
 }
-2
+
