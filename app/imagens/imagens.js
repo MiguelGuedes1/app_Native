@@ -25,6 +25,7 @@ import foto_opiniao_11 from './foto_opiniao_11.avif';
 import foto_opiniao_12 from './foto_opiniao_12.avif';
 import about_image from './about_image.jpg';
 import icon from './icon.avif';
+import office from './office.jpg';
 
 
 
@@ -57,7 +58,8 @@ const imagens = {
   foto_opiniao_11,
   foto_opiniao_12,
   about_image,
-  icon
+  icon,
+  office
 
   
 

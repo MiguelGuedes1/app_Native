@@ -44,6 +44,9 @@ const RootLayout = () => {
     <Stack.Screen name='index' options={{headerShown:false}} />
     <Stack.Screen name='(auth)' options={{headerShown:false}} />
     <Stack.Screen name='(tabs)' options={{headerShown:false}} />
+    <Stack.Screen name='onBoardingPageone' options={{headerShown:false}} />
+    <Stack.Screen name='onBoardingPagetwo' options={{headerShown:false}} />
+    <Stack.Screen name='onBoardingPagethree' options={{headerShown:false}} />
     
    
  </Stack>
