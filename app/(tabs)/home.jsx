@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView, Linking, Dimensions, Modal, TextInput } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView, Linking, Dimensions, Modal, TextInput,TouchableWithoutFeedback } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import info_consultores from "../../info_consultores/info_consultores";
+import { Redirect, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import imagens from "../imagens/imagens";
+import { push } from "expo-router/build/global-state/routing";
 
 const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -44,8 +47,37 @@ const Home = () => {
   return (
     <SafeAreaView className="flex-1 bg-primary">
       <ScrollView className="bg-primary py-8 px-6">
+        <View className="flex flex-row justify-between items-center px-3 mb-12 pb-6">
+          {/* Mensagem de boas-vindas */}
+          <Text className="text-white text-3xl font-pbold">
+            Hi, Miguel 👋
+          </Text>
+
+          {/* Foto do usuário e ícone de notificações */}
+          <View className="flex flex-row items-center gap-3">
+            {/* Foto do usuário */}
+            <Image
+              source={imagens.foto_opiniao_3}
+              className="w-12 h-12 rounded-full border-2 border-white"
+            />
+            {/* Ícone de notificações */}
+            <View className="relative">
+              <Ionicons
+                onPress={() => router.push("/notifications")}
+                name="notifications-outline"
+                size={30}
+                color="white"
+              />
+              {/* Número de notificações pendentes */}
+              <View className="absolute -top-2 -right-2 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center">
+                <Text className="text-white text-sm font-bold">6</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+
         {/* Título da Página */}
-        <Text className="text-4xl font-pbold text-center text-white mb-6 mt-5">
+        <Text className="text-[36px] font-pbold text-center text-white mb-6 mt-6">
           Meet Our Real Estate Consultants
         </Text>
 
@@ -90,10 +122,10 @@ const Home = () => {
 
               {/* Botão de Enviar Referência */}
               <TouchableOpacity
-                className="bg-[#FF8E01] rounded-2xl py-2 px-4 flex-row justify-center items-center"
+                className="bg-[#FF8E01] rounded-2xl py-3 px-6 flex-row justify-center items-center"
                 onPress={() => handleOpenModal(consultor)}
               >
-                <Text className="text-white font-pbold">Send Reference</Text>
+                <Text className="text-white font-pbold text-lg">Send Reference</Text>
               </TouchableOpacity>
             </View>
           ))}
@@ -103,58 +135,76 @@ const Home = () => {
       <StatusBar backgroundColor="#161622" style="light" />
 
       {/* Modal de Envio de Referência */}
-      <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
-        <View className="flex-1 justify-center items-center bg-black/50">
-          <View className="bg-primary p-6 rounded-2xl w-[90%] max-w-lg border-2 border-white ">
-            <Text className="text-2xl font-bold text-center mb-4 text-white">
-              Send a Reference to {selectedConsultor?.nome}
-            </Text>
+                <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => setModalVisible(false)}
+          >
+            {/* Envolve o modal com TouchableWithoutFeedback para fechar ao clicar fora */}
+            <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+              <View className="flex-1 justify-center items-center bg-black/50">
+                {/* Impede que o modal feche ao clicar dentro dele */}
+                <TouchableWithoutFeedback>
+                  <View className="bg-primary p-6 rounded-2xl w-[90%] max-w-lg border-2 border-white">
+                    <Text className="text-2xl font-bold text-center mb-4 text-white">
+                      Send a Reference to {selectedConsultor?.nome}
+                    </Text>
 
-            {/* Campos do Formulário */}
-            <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white"
-                placeholder="Reference name"
-                placeholderTextColor="white"  
-                value={formData.Reference_Name}
-                onChangeText={(text) => handleInputChange("Reference_Name", text)}
-              />
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white"
-                placeholder="Phone Number"
-                placeholderTextColor="white"  
-                keyboardType="phone-pad"
-                value={formData.phone}
-                onChangeText={(text) => handleInputChange("phone", text)}
-              />
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white "
-                placeholder="Location"
-                placeholderTextColor="white"  
-                value={formData.location}
-                onChangeText={(text) => handleInputChange("location", text)}
-              />
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white"
-                placeholder="Message"
-                placeholderTextColor="white"  
-                multiline
-                numberOfLines={3}
-                value={formData.message}
-                onChangeText={(text) => handleInputChange("message", text)}
-              />
+                    {/* Campos do Formulário */}
+                    <TextInput
+                      className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-white"
+                      placeholder="Reference name"
+                      placeholderTextColor="#999"
+                      value={formData.Reference_Name}
+                      onChangeText={(text) => handleInputChange("Reference_Name", text)}
+                    />
+                    <TextInput
+                      className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-white"
+                      placeholder="Phone Number"
+                      placeholderTextColor="#999"
+                      keyboardType="phone-pad"
+                      value={formData.phone}
+                      onChangeText={(text) => handleInputChange("phone", text)}
+                    />
+                    <TextInput
+                      className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-white"
+                      placeholder="Location"
+                      placeholderTextColor="#999"
+                      value={formData.location}
+                      onChangeText={(text) => handleInputChange("location", text)}
+                    />
+                    <TextInput
+                      className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-white"
+                      placeholder="Message"
+                      placeholderTextColor="#999"
+                      multiline
+                      numberOfLines={4}
+                      value={formData.message}
+                      onChangeText={(text) => handleInputChange("message", text)}
+                    />
 
-            {/* Botões */}
-            <View className="flex-row justify-between mt-4">
-              <TouchableOpacity className="px-4 py-2 bg-gray-300 rounded-lg" onPress={() => setModalVisible(false)}>
-                <Text className="text-gray-700">Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="px-4 py-2 bg-[#FF8E01] rounded-lg" onPress={handleSendReference}>
-                <Text className="text-white">Send</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
+                    {/* Botões */}
+                    <View className="flex-row justify-between mt-4">
+                      <TouchableOpacity
+                        className="px-6 py-3 bg-gray-300 rounded-lg"
+                        onPress={() => setModalVisible(false)}
+                      >
+                        <Text className="text-gray-700 font-pbold">Cancel</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        className="px-6 py-3 bg-[#FF8E01] rounded-lg"
+                        onPress={handleSendReference}
+                      >
+                        <Text className="text-white font-pbold">Send</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </TouchableWithoutFeedback>
+              </View>
+            </TouchableWithoutFeedback>
+          </Modal>
+
 
     </SafeAreaView>
   );

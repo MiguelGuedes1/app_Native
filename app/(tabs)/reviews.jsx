@@ -34,7 +34,7 @@ const Reviews = () => {
       <ScrollView className="py-8 px-6">
         {/* Titulo */}
         <View className="items-center mb-8">
-          <Text className="text-5xl font-pbold text-center text-white mb-3 mt-5 py-5">
+          <Text className="text-5xl font-pbold text-center text-white my-5 py-5">
             Client Reviews
           </Text>
           <Text className="text-lg text-gray-300 text-center max-w-[80%]">

@@ -47,6 +47,8 @@ const RootLayout = () => {
     <Stack.Screen name='onBoardingPageone' options={{headerShown:false}} />
     <Stack.Screen name='onBoardingPagetwo' options={{headerShown:false}} />
     <Stack.Screen name='onBoardingPagethree' options={{headerShown:false}} />
+    <Stack.Screen name='notifications' options={{headerShown:false}} />
+    
     
    
  </Stack>

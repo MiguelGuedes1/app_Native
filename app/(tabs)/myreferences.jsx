@@ -112,7 +112,7 @@ const Myreferences = () => {
       <ScrollView className="bg-gray-900 py-8 px-6">
         {/* Cabeçalho Moderno */}
         <View className="items-center mb-8">
-          <Text className="text-5xl font-pbold text-center text-white mb-3 py-5">
+          <Text className="text-5xl font-pbold text-center text-white my-3 py-5">
             Your Sent References
           </Text>
           <Text className="text-lg text-gray-300 text-center max-w-[80%]">
