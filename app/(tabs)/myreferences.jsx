@@ -110,10 +110,16 @@ const Myreferences = () => {
   return (
     <SafeAreaView className="flex-1 bg-gray-900">
       <ScrollView className="bg-gray-900 py-8 px-6">
-        {/* Título da Página */}
-        <Text className="text-4xl font-pbold text-center text-white mb-6 mt-5">
-          Your Sent References
-        </Text>
+        {/* Cabeçalho Moderno */}
+        <View className="items-center mb-8">
+          <Text className="text-5xl font-pbold text-center text-white mb-3 py-5">
+            Your Sent References
+          </Text>
+          <Text className="text-lg text-gray-300 text-center max-w-[80%]">
+            Each reference is carefully analyzed by our team to ensure the best possible outcome. 
+            Your trust is our priority, and we handle every detail with professionalism and care.
+          </Text>
+        </View>
 
         {/* Lista de Referências */}
         <View className="flex flex-col gap-4">

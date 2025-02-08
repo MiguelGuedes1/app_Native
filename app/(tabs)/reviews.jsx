@@ -32,17 +32,22 @@ const Reviews = () => {
   return (
     <SafeAreaView className="flex-1 bg-primary">
       <ScrollView className="py-8 px-6">
-        {/* Título da Página */}
-        <Text className="text-4xl font-pbold text-center text-white mb-6 mt-5">
-          What Our Clients Say
-        </Text>
+        {/* Titulo */}
+        <View className="items-center mb-8">
+          <Text className="text-5xl font-pbold text-center text-white mb-3 mt-5 py-5">
+            Client Reviews
+          </Text>
+          <Text className="text-lg text-gray-300 text-center max-w-[80%]">
+            Discover what our clients are saying about their experiences. Your feedback helps us grow and improve!
+          </Text>
+        </View>
 
         {/* Lista de Opiniões */}
         <View className="flex flex-row flex-wrap justify-center">
           {reviews.map((opiniao, index) => (
             <View
               key={index}
-              className="w-[90%] sm:w-[45%] bg-primary rounded-2xl p-6 mb-6 shadow-xl border border-gray-200"
+              className="w-[90%] sm:w-[45%] bg-primary rounded-2xl p-6 mb-6 shadow-xl border border-gray-700"
               style={{
                 width: windowWidth * 0.9,
                 maxWidth: 380,
@@ -59,7 +64,7 @@ const Reviews = () => {
                 <Text className="text-xl font-semibold text-white">
                   {opiniao.nome}
                 </Text>
-                <Text className="text-sm text-white">{opiniao.cargo}</Text>
+                <Text className="text-sm text-gray-300">{opiniao.cargo}</Text>
 
                 {/* Estrelas de Avaliação */}
                 <View className="flex flex-row mt-2">
@@ -83,28 +88,28 @@ const Reviews = () => {
         </View>
 
         {/* User Review Form */}
-        <View className="bg-primary rounded-2xl p-6 mb-6 shadow-xl border border-gray-200">
+        <View className="bg-primary rounded-2xl p-6 mb-6 shadow-xl border border-gray-700">
           <Text className="text-2xl font-semibold text-white text-center mb-4">
             Share Your Review
           </Text>
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white"
+            className="border border-gray-600 rounded-lg px-4 py-2 mb-3 text-white bg-gray-800"
             placeholder="Your Name"
-            placeholderTextColor="white"
+            placeholderTextColor="#A0AEC0"
             value={newReview.nome}
             onChangeText={(text) => handleInputChange("nome", text)}
           />
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white"
+            className="border border-gray-600 rounded-lg px-4 py-2 mb-3 text-white bg-gray-800"
             placeholder="Your Position"
-            placeholderTextColor="white"
+            placeholderTextColor="#A0AEC0"
             value={newReview.cargo}
             onChangeText={(text) => handleInputChange("cargo", text)}
           />
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-2 mb-3 text-white"
+            className="border border-gray-600 rounded-lg px-4 py-2 mb-3 text-white bg-gray-800"
             placeholder="Your Review"
-            placeholderTextColor="white"
+            placeholderTextColor="#A0AEC0"
             value={newReview.opiniao}
             onChangeText={(text) => handleInputChange("opiniao", text)}
             multiline
